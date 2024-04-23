@@ -1,3 +1,3 @@
-idf_component_register(SRCS "esp_tf-l02.c"
+idf_component_register(SRCS "esp_tf-lc02.c"
                     INCLUDE_DIRS "include"
                     REQUIRES driver)
