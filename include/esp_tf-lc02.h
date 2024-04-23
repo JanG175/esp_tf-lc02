@@ -60,7 +60,7 @@ typedef struct tflc02_conf_t
 
 void tflc02_init(tflc02_conf_t tflc);
 
-void tflc02_measure_distance(tflc02_conf_t tflc, uint16_t* distance);
+esp_err_t tflc02_measure_distance(tflc02_conf_t tflc, uint16_t* distance);
 
 void tflc02_crosstalk_correction(tflc02_conf_t tflc, uint8_t* error, uint16_t* xtak);
 

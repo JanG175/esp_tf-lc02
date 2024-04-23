@@ -85,9 +85,13 @@ void tflc02_init(tflc02_conf_t tflc)
  * 
  * @param tflc configuration structure
  * @param distance measured distance
+ * 
+ * @return error code
 */
-void tflc02_measure_distance(tflc02_conf_t tflc, uint16_t* distance)
+esp_err_t tflc02_measure_distance(tflc02_conf_t tflc, uint16_t* distance)
 {
+    esp_err_t err = ESP_OK;
+
     uint32_t len_w = 5;
     uint8_t data[len_w];
 
@@ -111,35 +115,49 @@ void tflc02_measure_distance(tflc02_conf_t tflc, uint16_t* distance)
         {
             case TFLC02_VALID_DATA:
                 *distance = ((uint16_t)response[4] << 8) | (uint16_t)response[5];
+                err = ESP_OK;
                 break;
             case TFLC02_VCSEL_SHORT:
                 ESP_LOGE(TAG, "VCSEL short-circuited");
+                err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_LOW_SIGNAL:
                 ESP_LOGE(TAG, "Low signal");
+                err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_LOW_SN:
                 ESP_LOGE(TAG, "Low SN");
+                err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_TOO_MUCH_AMB:
                 ESP_LOGE(TAG, "Too much ambient light");
+                err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_WAF:
                 ESP_LOGE(TAG, "Wrapping error");
+                err = ESP_FAIL;
                 break;
             case TFLC02_CAL_ERROR:
                 ESP_LOGE(TAG, "Internal calculation error");
+                err = ESP_FAIL;
                 break;
             case TFLC02_CROSSTALK_ERROR:
                 ESP_LOGE(TAG, "Crosstalk error");
+                err = ESP_FAIL;
                 break;
             default:
                 ESP_LOGE(TAG, "Unknown error");
+                err = ESP_FAIL;
                 break;
         }
     }
     else
+    {
         ESP_LOGW(TAG, "Invalid communication");
+        err = ESP_ERR_INVALID_RESPONSE;
+    }
+
+    return err;
 }
 
 
