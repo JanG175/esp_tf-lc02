@@ -1,3 +1,11 @@
+/**
+ * @file esp_tf-lc02.h
+ * @author JanG175
+ * @brief ESP-IDF driver for TF-LC02 TOF sensor
+ * 
+ * @copyright Apache 2.0
+*/
+
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
