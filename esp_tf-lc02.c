@@ -118,35 +118,35 @@ esp_err_t tflc02_measure_distance(tflc02_conf_t tflc, uint16_t* distance)
                 err = ESP_OK;
                 break;
             case TFLC02_VCSEL_SHORT:
-                ESP_LOGE(TAG, "VCSEL short-circuited");
+                ESP_LOGD(TAG, "VCSEL short-circuited");
                 err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_LOW_SIGNAL:
-                ESP_LOGE(TAG, "Low signal");
+                ESP_LOGD(TAG, "Low signal");
                 err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_LOW_SN:
-                ESP_LOGE(TAG, "Low SN");
+                ESP_LOGD(TAG, "Low SN");
                 err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_TOO_MUCH_AMB:
-                ESP_LOGE(TAG, "Too much ambient light");
+                ESP_LOGD(TAG, "Too much ambient light");
                 err = ESP_ERR_INVALID_STATE;
                 break;
             case TFLC02_WAF:
-                ESP_LOGE(TAG, "Wrapping error");
+                ESP_LOGD(TAG, "Wrapping error");
                 err = ESP_FAIL;
                 break;
             case TFLC02_CAL_ERROR:
-                ESP_LOGE(TAG, "Internal calculation error");
+                ESP_LOGD(TAG, "Internal calculation error");
                 err = ESP_FAIL;
                 break;
             case TFLC02_CROSSTALK_ERROR:
-                ESP_LOGE(TAG, "Crosstalk error");
+                ESP_LOGD(TAG, "Crosstalk error");
                 err = ESP_FAIL;
                 break;
             default:
-                ESP_LOGE(TAG, "Unknown error");
+                ESP_LOGD(TAG, "Unknown error");
                 err = ESP_FAIL;
                 break;
         }
