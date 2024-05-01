@@ -48,7 +48,7 @@ static void tflc02_uart_recv(tflc02_conf_t tflc, uint8_t* response, uint32_t len
     }
     else
     {
-        ESP_LOGE(TAG, "UART read error");
+        ESP_LOGD(TAG, "UART read error");
         for (uint32_t i = 0; i < len; i++)
             response[i] = 0;
     }
@@ -153,7 +153,7 @@ esp_err_t tflc02_measure_distance(tflc02_conf_t tflc, uint16_t* distance)
     }
     else
     {
-        ESP_LOGW(TAG, "Invalid communication");
+        ESP_LOGD(TAG, "Invalid communication");
         err = ESP_ERR_INVALID_RESPONSE;
     }
 

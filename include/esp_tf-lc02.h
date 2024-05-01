@@ -16,7 +16,7 @@
 #define TFLC02_INIT_UART          1 // uncomment to initialize UART
 
 #define TFLC02_BAUDRATE           115200
-#define TFLC02_TIMEOUT            100 / portTICK_PERIOD_MS
+#define TFLC02_TIMEOUT            2 / portTICK_PERIOD_MS
 
 #define TFLC02_PACKET_HEADER_0    0x55
 #define TFLC02_PACKET_HEADER_1    0xAA
